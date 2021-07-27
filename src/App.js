@@ -1,14 +1,18 @@
-import React from "react";
+import React, { useEffect, useContext } from "react";
 import Header from "./components/Header";
-import Characters from "./components/Characters";
-import Theme from "./components/Theme";
+import Characters from "./screens/Characters";
+import Context from "./context";
+import GlobalStyle from "./GlobalStyle";
 
 const App = () => {
+  const [{ theme } , dispatch] = useContext(Context);
+
   return (
-    <Theme>
+    <>
+      <GlobalStyle theme={theme} />
       <Header />
       <Characters />
-    </Theme>
+    </>
   );
 };
 

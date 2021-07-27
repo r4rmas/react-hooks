@@ -1,21 +1,19 @@
-import React, { useContext, useEffect } from "react";
-import ThemeContext from "../../context";
-import { toggleTheme } from "../../context/actions";
-import { Container } from "./styles";
+import React, { useContext } from "react";
+import Context from "../../context";
+import { toggleTheme } from "../../context/reducer/actions";
+import { Title } from "./styles";
 
 const Header = () => {
-  const [theme, dispatch] = useContext(ThemeContext);
-
-  useEffect(() => console.log(theme), []);
+  const [{ theme }, dispatch] = useContext(Context);
 
   return (
-    <Container>
-      <h1>ReactHooks</h1>
+    <div>
+      <Title theme={theme}>ReactHooks</Title>
       <button onClick={() => dispatch(toggleTheme())}>
         {theme === "light" ? "☀️" : "🌘"}
       </button>
-    </Container>
+    </div>
   );
-};
+}
 
 export default Header;
